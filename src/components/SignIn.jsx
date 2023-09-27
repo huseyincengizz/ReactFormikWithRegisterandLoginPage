@@ -24,6 +24,7 @@ function SignIn() {
     <div className='form'>
     <form className='mainForm' onSubmit={handleSubmit}>
         <h1>OTURUM AÇ</h1>
+
         <div className="inputs">
         <label>Email</label>
         <input 
@@ -32,12 +33,10 @@ function SignIn() {
         value={values.email}
         onChange={handleChange}
         placeholder='Mail adresinizi giriniz...'
-        autoComplete='no'
         className={errors.email ? 'error' : ''}
          />
          {errors.email && <label className='errorText'>{errors.email}</label>}
         </div>
-
 
         <div className="inputs">
         <label>Şifre</label>

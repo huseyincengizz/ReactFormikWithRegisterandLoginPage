@@ -12,6 +12,8 @@ export const mainSchema = yup.object().shape({
     .number()
     .positive("Lütfen pozitif sayı giriniz !")
     .integer("Lütfen yaşınızı tamsayı olacak şekilde giriniz !")
+    .min(18, "18 yaşından küçükler sitemize üye olamaz !")
+    .max(90, "90 yaşından büyükler sitemize üye olamaz !")
     .required("Lütfen yaşınızı giriniz !"),
 
     password: yup

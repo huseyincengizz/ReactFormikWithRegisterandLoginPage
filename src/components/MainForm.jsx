@@ -9,6 +9,7 @@ const onSubmit = async (values, actions) => {
       setTimeout(resolve, 1000);
     });
     actions.resetForm();
+    alert("Sitemize başarıyla üye oldunuz :)")
   };
 
 function MainForm() {
@@ -26,6 +27,7 @@ function MainForm() {
     <div onSubmit={handleSubmit} className='form'>
     <form className='mainForm'>
         <h1>ÜYELİK FORMU</h1>
+
         <div className="inputs">
         <label>Email</label>
         <input 
@@ -34,7 +36,6 @@ function MainForm() {
         value={values.email}
         onChange={handleChange}
         placeholder='Mail adresinizi giriniz...'
-        autoComplete='no'
         className={errors.email ? 'error' : ''}
          />
          {errors.email && <label className='errorText'>{errors.email}</label>}

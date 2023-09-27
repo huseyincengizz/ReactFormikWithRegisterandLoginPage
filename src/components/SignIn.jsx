@@ -1,23 +1,29 @@
 import React from 'react'
 import { useFormik} from 'formik'
-import { mainSchema } from '../schemas'
+import { loginSchema } from '../schemas'
 import { Link } from 'react-router-dom';
 
+const onSubmit = async (values, actions) => {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 1000);
+    });
+    actions.resetForm();
+    alert("Başarıyla giriş yapıldı :)")
+  };
 
 function SignIn() {
-    const {values, errors, handleChange} = useFormik({
+    const {values, errors, handleSubmit, handleChange, isSubmitting} = useFormik({
         initialValues: {
           email: '',
           password: ''
         },
-        validationSchema : mainSchema,
-        
+        validationSchema : loginSchema,
+        onSubmit,
     })
   return (
-    <div  className='form'>
-    <form className='mainForm'>
+    <div className='form'>
+    <form className='mainForm' onSubmit={handleSubmit}>
         <h1>OTURUM AÇ</h1>
-
         <div className="inputs">
         <label>Email</label>
         <input 
@@ -32,6 +38,7 @@ function SignIn() {
          {errors.email && <label className='errorText'>{errors.email}</label>}
         </div>
 
+
         <div className="inputs">
         <label>Şifre</label>
         <input 
@@ -44,8 +51,8 @@ function SignIn() {
          />
          {errors.password && <label className='errorText'>{errors.password}</label>}
         </div>
-        
-        <button className='register'>GİRİŞ YAP</button>
+
+        <button disabled={isSubmitting} className='register' type='submit'>GİRİŞ YAP</button>
         <Link to="/">Üye Ol</Link>
     </form>
     </div>
